@@ -1,14 +1,12 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 const WeatherForm = (props) => {
      return (
-          <Fragment>
-               <form onSubmit={props.onSubmit}>
-                    <input type="text" name="city" value={props.city} onChange={props.updateCity} />
-                    <input type="text" name="countryCode" value={props.countryCode} onChange={props.updateCountryCode} />
-                    <input type="submit" value="submit" />
-               </form>
-          </Fragment>
+          <form className="weather-form" onSubmit={props.onSubmit}>
+               <input type="text" name="city" value={props.city} onChange={props.updateCity} className="weather-form__input" placeholder="City name" />
+               <input type="text" name="countryCode" value={props.countryCode} onChange={props.updateCountryCode} className="weather-form__input" placeholder="Country code" />
+               <input type="submit" value="Search" className="weather-form__submit" />
+          </form>
      )
 }
 export default WeatherForm
