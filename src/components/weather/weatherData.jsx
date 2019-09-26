@@ -1,21 +1,26 @@
 import React from 'react'
 
-const WeatherData = (props) => {
-     return (
-          <div className="weather-data">
-               <p className="weather-error">{props.error ? 'Ha ocurrido un error, por favor verifique sus datos e intentelo de nuevo' : ''}</p>
-               <header className="weather-header">
-                    <h2 className="weather-header__title">{props.values.name} / {props.values.countryCode}</h2>
-                    <p className="weather-header__description">{props.values.description}</p>
-                    <p className="weather-header__temp">{props.values.temp} °C</p>
-               </header>
-               <section className="weather-body">
-                    <p className="weather-body__maxtemp">maximum temperature: <span>{props.values.maxtemp} °C</span> </p>
-                    <p className="weather-body__mintemp">Minimum temperature: <span>{props.values.mintemp} °C</span> </p>
-                    <p className="weather-body__humedity">Humedity: <span>{props.values.humedity} %</span></p>
-                    <p className="weather-body__wind">wind: <span>{props.values.wind} m/s</span></p>
-               </section>
-          </div>
-     )
-}
+const WeatherData = ({ values, error }) => (
+     <div className="container">
+          <main className="weather-app">
+               <div className="weather-app__resume">
+                    <p className="weather-error">{error ? 'Ha ocurrido un error, por favor verifique sus datos e intentelo de nuevo' : ''}</p>
+                    <h3 className="weather-name">{values.name} / <span className="weather-code">{values.countryCode}</span></h3>
+                    {values.icon
+                         ?
+                         <img src={`http://openweathermap.org/img/w/${values.icon}.png`} className="weather-icon" alt="weather-icon" />
+                         :
+                         <img src={`http://openweathermap.org/img/w/01d.png`} className="weather-icon" alt="weather-icon" />}
+                    <p className="weather-temp">{values.temp} <span className="weather-temp__metric">°C</span></p>
+                    <p className="weather-description">{values.description}</p>
+               </div>
+               <div className="weather-app__data">
+                    <p className="weather-maxmintemp">max temp: <span className="weather-maxtemp">{values.maxtemp} °C</span> / min temp: <span className="weather-mintemp">{values.mintemp} °C</span></p>
+                    <p className="weather-humedity">humedity: <span className="weather-humedity__value">{values.humedity} %</span></p>
+                    <p className="weather-wind">wind: <span className="weather-wind__value">{values.wind} m/s</span></p>
+               </div>
+          </main>
+     </div>
+)
+
 export default WeatherData

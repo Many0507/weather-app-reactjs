@@ -1,9 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Weather from './weather'
 
-const App = () => (
-     <Fragment>
-          <Weather />
-     </Fragment>
-)
+const App = () => <Weather />
+
 export default App
